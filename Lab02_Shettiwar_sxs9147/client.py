@@ -38,8 +38,8 @@ def send(CLIENT,file_name): #This function is used to open the text file entered
 
             CLIENT.send("Y".encode('utf8')) #
             """ Reading the file text and sending it to the server. """
-            f = open(filepath, "r") #opening in read mode
-            data = f.read()
+            with open(filepath, "r") as f:
+                data = f.read()
             msg.insert(tk.END,f"[SENDING] :{data}")
             CLIENT.send(data.encode(FORMAT))
             break
